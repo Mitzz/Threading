@@ -12,12 +12,12 @@ public class Increment implements Processor{
 		}
 	}
 	
-	public void increment1(){
+	public synchronized void increment1(){
 		sleep(1);
 		counter1++;
 	}
 	
-	public void increment2(){
+	public synchronized void increment2(){
 		sleep(1);
 		counter2++;
 	}
