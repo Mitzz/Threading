@@ -2,26 +2,21 @@ package org.mitz;
 
 public class Runner extends Thread{
 	
-	long sleepTime ;
+	private boolean running = true;
 	
-	public Runner() {
-		sleepTime = 100;
-	}
-	
-	public Runner(long sleepTime) {
-		this.sleepTime = sleepTime;
-	}
-
-	@Override
 	public void run() {
-		for (int i = 0; i < 10; i++) {
-			System.out.println("Hello " + i);
-			
+		
+		while(running){
+			System.out.println("Hello");
 			try {
-				Thread.sleep(sleepTime);
+				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void shutdown(){
+		running = false;
 	}
 }
