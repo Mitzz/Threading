@@ -4,15 +4,23 @@ public class Increment implements Processor{
 	
 	private int count1;
 	private int count2;
+	Object object1 = new Object();
+	Object object2 = new Object();
 	
-	public synchronized void incrementCount1(){
-		sleep(1);
-		count1++;
+	public void incrementCount1(){
+		synchronized (object1) {
+			sleep(1);
+			count1++;	
+		}
+		
 	}
 	
 	public synchronized void incrementCount2(){
-		sleep(1);
-		count2++;
+		synchronized (object2) {
+			sleep(1);
+			count2++;	
+		}
+		
 	}
 	
 	public void process(){
