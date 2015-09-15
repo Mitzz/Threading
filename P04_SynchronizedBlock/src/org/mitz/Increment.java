@@ -1,6 +1,6 @@
 package org.mitz;
 
-public class Increment {
+public class Increment implements Processor{
 
 	private int counter1;
 	private int counter2;
