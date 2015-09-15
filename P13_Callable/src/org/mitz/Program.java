@@ -20,6 +20,7 @@ public class Program {
 			e.printStackTrace();
 		}
 		
+		System.out.println("Some thing to add in stage 1");
 	}
 
 	
