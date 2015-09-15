@@ -3,7 +3,7 @@ package org.mitz;
 class Increment implements Processor{
 	private int count;
 	
-	public void increment(){
+	public synchronized void increment(){
 		count++;
 	}
 	
