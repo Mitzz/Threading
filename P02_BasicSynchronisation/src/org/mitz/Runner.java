@@ -1,8 +1,7 @@
 package org.mitz;
 
 public class Runner extends Thread{
-	
-	private boolean running = true;
+	private volatile boolean running = true;
 	
 	public void run() {
 		
