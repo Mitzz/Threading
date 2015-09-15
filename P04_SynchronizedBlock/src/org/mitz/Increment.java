@@ -5,6 +5,9 @@ public class Increment implements Processor{
 	private int counter1;
 	private int counter2;
 	
+	private Object obj1 = new Object();
+	private Object obj2 = new Object();
+	
 	public void process(){
 		for (int i = 0; i < 100; i++) {
 			increment1();
@@ -12,14 +15,18 @@ public class Increment implements Processor{
 		}
 	}
 	
-	public synchronized void increment1(){
+	public void increment1(){
 		sleep(1);
-		counter1++;
+		synchronized (obj1) {
+			counter1++;
+		}
 	}
 	
-	public synchronized void increment2(){
+	public void increment2(){
 		sleep(1);
-		counter2++;
+		synchronized (obj2) {
+			counter2++;
+		}
 	}
 	
 	private void sleep(int time) {
