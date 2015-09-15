@@ -1,5 +1,9 @@
 package org.mitz;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 public class Program {
 
 	public static void main(String[] args) {
@@ -9,21 +13,16 @@ public class Program {
 		
 		Worker worker = new Worker(increment);
 		
-		Thread t1 = new Thread(worker);
-		Thread t2 = new Thread(worker);
-		Thread t3 = new Thread(worker);
-		Thread t4 = new Thread(worker);
-		Thread t5 = new Thread(worker);
-		Thread t6 = new Thread(worker);
+		ExecutorService factory = Executors.newFixedThreadPool(6);
 		
-		t1.start(); t2.start();
-		t3.start(); t4.start();
-		t5.start(); t6.start();
+		for (int i = 0; i < 6; i++) {
+			factory.submit(worker);
+		}
+		
+		factory.shutdown();
 		
 		try {
-			t1.join(); t2.join();
-			t3.join(); t4.join();
-			t5.join(); t6.join();
+			factory.awaitTermination(1, TimeUnit.MINUTES);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
