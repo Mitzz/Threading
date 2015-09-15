@@ -5,16 +5,18 @@ public class Increment implements Processor{
 	private int count1;
 	private int count2;
 	
-	public void incrementCount1(){
+	public synchronized void incrementCount1(){
+		sleep(1);
 		count1++;
 	}
 	
-	public void incrementCount2(){
+	public synchronized void incrementCount2(){
+		sleep(1);
 		count2++;
 	}
 	
 	public void process(){
-		sleep(100);
+		
 		for(int i = 0; i < 1000; i++){
 			incrementCount1();
 			incrementCount2();
